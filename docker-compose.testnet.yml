@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  neo_cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 10332:10332
+      - 20332:20332
+    volumes:
+      - ./wallet.dat:/opt/wallet.dat
+      - ./config/protocol.testnet.json:/opt/neo-cli/protocol.json
+      - ./config/config.testnet.json:/opt/neo-cli/config.json
+    environment:
+      WALLET_PASSWORD: "THE_WALLET_PASSWORD"
